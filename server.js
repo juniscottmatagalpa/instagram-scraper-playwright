@@ -48,4 +48,5 @@ app.post("/scrape", async (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log("✅ Scraper ejecutándose en puerto", port));
+app.listen(port, () => console.log(`✅ Scraper ejecutándose en puerto ${port}`));
+
