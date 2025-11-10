@@ -23,8 +23,12 @@ app.post("/scrape", async (req, res) => {
 
     const html = await response.text();
 
-    const getMeta = (property) => {
-      const regex = new RegExp(`<meta property="${property}" content="([^"]+)"`, "i");
+    // Extraer meta tags de la página
+    const getMeta = (prop) => {
+      const regex = new RegExp(
+        `<meta property=["']${prop}["'] content=["']([^"']+)["']`,
+        "i"
+      );
       const match = html.match(regex);
       return match ? match[1] : null;
     };
@@ -47,7 +51,7 @@ app.post("/scrape", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`✅ Scraper sin Playwright activo en puerto ${port}`));
+const port = process.env.PORT || 10000;
+app.listen(port, () => console.log(`✅ Scraper SIN Playwright corriendo en ${port}`));
 
 
